@@ -335,3 +335,8 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 86ms (Views: 74.7ms | Allocations: 834)
 
 
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE DATABASE `api_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE DATABASE `api_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE DATABASE `api_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE DATABASE `api_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE DATABASE `api_test` DEFAULT CHARACTER SET `utf8mb4`[0m
