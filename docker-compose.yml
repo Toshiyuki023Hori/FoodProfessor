@@ -42,7 +42,7 @@ services:
       MYSQL_DATABASE: ${DATABASE}
       MYSQL_USER: ${MYSQLUSER}
       MYSQL_PASSWORD: ${MYSQLPASS}
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: ${MYSQLROOTPASS}
       TZ: 'Asia/Tokyo'
     ports:
       - "3306:3306"
