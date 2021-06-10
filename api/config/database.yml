@@ -20,7 +20,7 @@ default: &default
 
 development:
   <<: *default
-  database: api_development
+  database: FoodProfessor
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

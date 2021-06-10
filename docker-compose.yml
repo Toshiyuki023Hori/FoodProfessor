@@ -44,6 +44,7 @@ services:
       MYSQL_PASSWORD: ${MYSQLPASS}
       MYSQL_ROOT_PASSWORD: ${MYSQLROOTPASS}
       TZ: "Asia/Tokyo"
+
     ports:
       - "3306:3306"
     volumes:
