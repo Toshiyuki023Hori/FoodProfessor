@@ -2,10 +2,11 @@
 
 ### 環境構築
 
-1. (任意のディレクトリ下で)`git clone THIS_REPO_URL`
+1. (任意のディレクトリ下で)`git clone REPO_URL`
 2. `docker-compose build`
 3. `docker-compose run front sh -c 'npx create-react-app react-app --template typescript'`
 4. `docker-compose up -d`
+
    **すぐに手順 5 にいかないこと**
    db コンテナで、`docker-entrypoint-initdb.d`配下のスクリプトが完了されてから手順 5 を実施
 

@@ -1,2 +1,2 @@
-CREATE DATABASE api_test;
-CREATE DATABASE api_production;
+CREATE DATABASE FoodProfessor_test;
+CREATE DATABASE FoodProfessor_production;
