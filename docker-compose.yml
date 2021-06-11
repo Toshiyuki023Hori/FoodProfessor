@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   api:
@@ -43,11 +43,13 @@ services:
       MYSQL_USER: ${MYSQLUSER}
       MYSQL_PASSWORD: ${MYSQLPASS}
       MYSQL_ROOT_PASSWORD: ${MYSQLROOTPASS}
-      TZ: 'Asia/Tokyo'
+      TZ: "Asia/Tokyo"
+
     ports:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
 volumes:
   db-data:
