@@ -6,7 +6,6 @@
 
 #------------------back------------------
 
->>>>>>> upstream/master
 # Ignore bundler config.
 /api/.bundle
 
@@ -29,10 +28,11 @@
 # Ignore master key for decrypting credentials and more.
 /api/config/master.key
 
+#/api/.env
+
 /api/vendor
 
 #/.env
-
 
 
 #------------------ front-------------------

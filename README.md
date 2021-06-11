@@ -17,7 +17,6 @@ $ docker logs foodprofessor_db_1 --follow
 ログ
 ...
 [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/00_create.sql
-
 [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/01_grant.sql
 ```
 
