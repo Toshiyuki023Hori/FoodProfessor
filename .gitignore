@@ -39,6 +39,7 @@
 
 # dependencies
 /front/node_modules
+/front/react-app/node_modules
 /front/.pnp
 /front/.pnp.js
 
