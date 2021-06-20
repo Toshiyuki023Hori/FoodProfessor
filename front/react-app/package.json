@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.2",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.4",
@@ -17,22 +18,16 @@
     "history": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
     "react-scripts": "4.0.3",
-    "redux": "^4.1.0",
-    "redux-actions": "^2.6.5",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:tailwind":"tailwind build src/styles.css -o src/tailwind.css",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -54,10 +49,8 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.1.4",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.36",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.4"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.2"
   }
 }
