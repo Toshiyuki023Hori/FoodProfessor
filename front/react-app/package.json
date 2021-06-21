@@ -67,7 +67,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
+    "front/react-app/src/**/*.{js,jsx,ts,tsx}": [
       "npm run lint-fix"
     ]
   }
