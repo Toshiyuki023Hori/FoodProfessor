@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   namespace :api do
     root 'top#index'
 
-    devise_for :users, controllers: {
-      registrations: 'users/registrations',
-      sessions: 'users/sessions'
+    mount_devise_token_auth_for 'User', at: 'auth', controllers: {
+      registrations: 'api/auth/registrations'
     }
+
   end
 end
