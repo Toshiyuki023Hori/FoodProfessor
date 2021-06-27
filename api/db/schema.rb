@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_27_142119) do
+ActiveRecord::Schema.define(version: 2021_06_27_143942) do
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "category_name", null: false
@@ -38,15 +38,24 @@ ActiveRecord::Schema.define(version: 2021_06_27_142119) do
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
+  create_table "ingredients", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "ingredient_name", null: false
+    t.float "quantity", null: false
+    t.bigint "purpose_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["purpose_id"], name: "index_ingredients_on_purpose_id"
+  end
+
   create_table "purposes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "purpose_name", null: false
     t.text "purpose_content"
     t.integer "purpose_for_people", default: 1
     t.integer "purpose_time"
-    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_purposes_on_user_id"
+    t.index ["recipe_id"], name: "index_purposes_on_recipe_id"
   end
 
   create_table "recipe_category_relations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -96,7 +105,8 @@ ActiveRecord::Schema.define(version: 2021_06_27_142119) do
   add_foreign_key "folders", "users"
   add_foreign_key "follows", "users", column: "followed_id"
   add_foreign_key "follows", "users", column: "follower_id"
-  add_foreign_key "purposes", "users"
+  add_foreign_key "ingredients", "purposes"
+  add_foreign_key "purposes", "recipes"
   add_foreign_key "recipe_category_relations", "categories"
   add_foreign_key "recipe_category_relations", "recipes"
   add_foreign_key "recipes", "folders"
