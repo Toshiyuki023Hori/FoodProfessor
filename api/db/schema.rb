@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_27_114519) do
+ActiveRecord::Schema.define(version: 2021_06_27_123211) do
+
+  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "category_name", null: false
+    t.integer "parent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
+  end
 
   create_table "folders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "folder_name", null: false
@@ -21,13 +29,22 @@ ActiveRecord::Schema.define(version: 2021_06_27_114519) do
   end
 
   create_table "follows", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
+    t.bigint "follower_id"
+    t.bigint "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_follows_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_follows_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
+  create_table "recipe_category_relations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_recipe_category_relations_on_category_id"
+    t.index ["recipe_id"], name: "index_recipe_category_relations_on_recipe_id"
   end
 
   create_table "recipes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -66,6 +83,10 @@ ActiveRecord::Schema.define(version: 2021_06_27_114519) do
   end
 
   add_foreign_key "folders", "users"
+  add_foreign_key "follows", "users", column: "followed_id"
+  add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "recipe_category_relations", "categories"
+  add_foreign_key "recipe_category_relations", "recipes"
   add_foreign_key "recipes", "folders"
   add_foreign_key "recipes", "users"
 end
