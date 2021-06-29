@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_27_143942) do
+ActiveRecord::Schema.define(version: 2021_06_29_085850) do
 
   create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "category_name", null: false
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2021_06_27_143942) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["purpose_id"], name: "index_ingredients_on_purpose_id"
+  end
+
+  create_table "procedures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "procedure_content", null: false
+    t.integer "order", null: false
+    t.string "procedure_image"
+    t.bigint "purpose_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["purpose_id"], name: "index_procedures_on_purpose_id"
   end
 
   create_table "purposes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -106,6 +116,7 @@ ActiveRecord::Schema.define(version: 2021_06_27_143942) do
   add_foreign_key "follows", "users", column: "followed_id"
   add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "ingredients", "purposes"
+  add_foreign_key "procedures", "purposes"
   add_foreign_key "purposes", "recipes"
   add_foreign_key "recipe_category_relations", "categories"
   add_foreign_key "recipe_category_relations", "recipes"
