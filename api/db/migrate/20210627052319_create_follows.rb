@@ -1,12 +1,13 @@
 class CreateFollows < ActiveRecord::Migration[6.1]
   def change
     create_table :follows do |t|
-      t.references :follower, foreign_key: { to_table: :users }
-      t.references :followed, foreign_key: { to_table: :users }
+      t.integer :follower_id, null: false
+      t.integer :followed_id, null: false
 
       t.timestamps
-
-      t.index %i[follower_id followed_id], unique: true
     end
+    add_index :follows, :follower_id
+    add_index :follows, :followed_id
+    add_index :follows, [:follower_id, :followed_id], unique: true
   end
 end

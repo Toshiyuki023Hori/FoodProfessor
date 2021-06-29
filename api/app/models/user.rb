@@ -14,18 +14,17 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
 
-  has_many :follows
-  has_many :followings, through: :follows, source: :followed
-  has_many :reverses_of_follow, class_name: 'Follow', foreign_key: 'follow_id'
-  has_many :followers, through: :reverses_of_follow, source: :follower
+  has_many :relationship, class_name: 'Follow', foreign_key: 'follower_id', dependent: :destroy
+  has_many :followings, through: :relationship, source: :followed
+  has_many :reverses_of_relationship, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy
+  has_many :followers, through: :reverses_of_relationship, source: :follower
 
   def follow(other_user)
-    follows.find_or_create_by(follow_id: other_user.id) unless self == other_user
+    relationship.create(followed_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)
-    relationship = follows.find_by(follow_id: other_user.id)
-    relationship.destroy if relationship
+    relationship.find_by(followed_id: other_user.id).destroy if relationship
   end
 
   def following?(other_user)

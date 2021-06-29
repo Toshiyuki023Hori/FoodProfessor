@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2021_06_29_085850) do
   end
 
   create_table "follows", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "follower_id"
-    t.bigint "followed_id"
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id"], name: "index_follows_on_followed_id"
@@ -113,8 +113,6 @@ ActiveRecord::Schema.define(version: 2021_06_29_085850) do
   end
 
   add_foreign_key "folders", "users"
-  add_foreign_key "follows", "users", column: "followed_id"
-  add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "ingredients", "purposes"
   add_foreign_key "procedures", "purposes"
   add_foreign_key "purposes", "recipes"
