@@ -45,3 +45,6 @@ gem 'dotenv-rails'
 # Devise
 gem 'devise', '~> 4.7.3'
 gem 'devise_token_auth'
+
+# debug
+gem 'pry-byebug', group: :development
