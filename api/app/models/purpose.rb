@@ -1,7 +1,7 @@
 class Purpose < ApplicationRecord
   belongs_to :recipe
   has_many :ingredients
-  has_many :processes
+  has_many :procedures
 
   validates :recipe_id, presence: true
   validates :purpose_name, { presence: true, length: { maximum: 50 } }
