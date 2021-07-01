@@ -5,6 +5,8 @@ class User < ApplicationRecord
         :rememberable, :validatable, :recoverable, :trackable
   include DeviseTokenAuth::Concerns::User
 
+  mount_uploader :user_image, ImageUploader
+
   validates :first_name, { presence: true, length: { maximum: 10 } }
   validates :last_name, { presence: true, length: { maximum: 10 } }
 
@@ -18,9 +20,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationship, source: :followed
   has_many :reverses_of_relationship, class_name: 'Follow', foreign_key: 'followed_id', dependent: :destroy
   has_many :followers, through: :reverses_of_relationship, source: :follower
-  has_many :folders
-  has_many :recipes
-  has_many :comments
+  has_many :folders, dependent: :destroy
+  has_many :recipes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def follow(other_user)
     relationship.create(followed_id: other_user.id) unless self == other_user
