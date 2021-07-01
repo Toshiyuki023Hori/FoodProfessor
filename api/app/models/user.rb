@@ -5,7 +5,7 @@ class User < ApplicationRecord
         :rememberable, :validatable, :recoverable, :trackable
   include DeviseTokenAuth::Concerns::User
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :user_image, ImageUploader
 
   validates :first_name, { presence: true, length: { maximum: 10 } }
   validates :last_name, { presence: true, length: { maximum: 10 } }

@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :recipe
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :comment_image, ImageUploader
 
   validates :user_id, presence: true
   validates :recipe_id, presence: true

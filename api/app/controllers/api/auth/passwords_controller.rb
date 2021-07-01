@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class API::Auth::PasswordsController < DeviseTokenAuth::PasswordsController
   # GET /resource/password/new
   # def new
