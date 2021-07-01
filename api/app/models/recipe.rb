@@ -5,6 +5,8 @@ class Recipe < ApplicationRecord
   has_many :purposes
   has_many :comments
 
+  mount_uploader :user_image, ImageUploader
+
   validates :user_id, presence: true
   validates :folder_id, presence: true
   validates :recipe_name, { presence: true, length: { maximum: 50 } }

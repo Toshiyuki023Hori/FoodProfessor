@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2021_06_29_141720) do
 
   create_table "recipes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "recipe_name", null: false
+    t.string "recipe_image"
     t.bigint "user_id", null: false
     t.bigint "folder_id", null: false
     t.datetime "created_at", precision: 6, null: false
